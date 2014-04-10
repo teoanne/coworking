@@ -1,4 +1,19 @@
 Coworking::Application.routes.draw do
+
+  root to: 'spaces#index'
+
+  resources :spaces, except: [:destroy] do
+    member do
+      post :vote
+    end
+  end
+    resources :comments, only: [:create] do
+      member do
+        post :vote
+      end
+    end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
