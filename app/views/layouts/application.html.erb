@@ -1,14 +1,39 @@
+<%# if logged_in? %>
+
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Coworking</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Find co-working spaces in Asia!</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+  <header>
+    
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= render 'layouts/navigation' %>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<%= yield %>
+    <div class="container">
+    
 
-</body>
+  <%= yield %>
+<%# else %>
+
+<h1 class="text-center">Find co-working spaces around the world with ease.</h1>
+<%= link_to "Sign up now", new_user_path %>
+<div>Log in</div>
+
+<%# end %>
+  </div>
+
+  </body>
 </html>
+
+
