@@ -2,6 +2,11 @@ Coworking::Application.routes.draw do
 
   root to: 'spaces#index'
 
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  get "/logout", to: "sessions#destroy"
+  get "/register", to: "users#new"
+
   resources :spaces, except: [:destroy] do
     member do
       post :vote
@@ -14,6 +19,7 @@ Coworking::Application.routes.draw do
     end
 
   resources :users, except: [:destroy]
+  resources :categories, only: [:new, :create, :show]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

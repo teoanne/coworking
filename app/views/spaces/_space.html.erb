@@ -1,0 +1,14 @@
+<div class="span9 well">
+  <h4><%= link_to @space.name %></h4>
+  <p><%= @space.address %></p>
+  <p><%= @space.city %></p>
+  <p><%= @space.country %></p>
+  <p><%= @space.phone %></p>
+  <p><%= @space.description %></p>
+  <p><span class="quiet">posted by </span><%= link_to space.user.username, user_path(space.user) %> at <span class="quiet"><%= display_datetime(space.created_at) %></span></p>
+  <small>
+    <span>
+      <%= link_to("#{space.comments.size} comments", space_path(space)) %>
+    </span>
+  </small>
+</div>

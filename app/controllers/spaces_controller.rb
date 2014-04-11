@@ -15,6 +15,14 @@ class SpacesController < ApplicationController
 
   def create
     @space = Space.new(space_params)
+
+    if @space.save(space_params)
+      flash[:notice] = "You have successfully added a coworking space!"
+      redirect_to root_path
+    else
+      flash[:error] = "There was an error with your coworking space entry"
+      render :new
+    end
   end
 
   def edit
@@ -32,6 +40,10 @@ class SpacesController < ApplicationController
 
   end
 
+  def vote
+    
+  end
+
   private
 
   def set_space
@@ -39,7 +51,7 @@ class SpacesController < ApplicationController
   end
 
   def space_params
-    params.require(:space).permit(:name, :street_address, :city, :country, :phone, :description, :cost)
+    params.require(:space).permit(:name, :street_address, :city, :country, :phone, :description)
   end
 
 end
