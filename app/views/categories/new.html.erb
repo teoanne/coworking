@@ -1,0 +1,11 @@
+<%= render "shared/errors", obj: @category %>
+<div class="well span9">
+    <%= form_for @category do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "Country" %>
+        <%= f.text_field :name, class: "form-control" %>
+      <div>
+        <%= f.submit "Add this country", class: "btn btn-primary" %>
+      <% end %>
+   
+</div>

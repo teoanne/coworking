@@ -1,7 +1,7 @@
-<div class="well">
-  <form role="form">
+<%= render 'shared/errors', obj: @space %>
+<div class="well span9">
     <%= form_for @space do |f| %>
-
+    
       <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, class: "form-control" %>
@@ -28,5 +28,5 @@
       <div>
         <%= f.submit(@space.new_record? ? "Add this space!" : "Update Space", class: "btn btn-primary") %>
       <% end %>
-    </form>
+   
 </div>

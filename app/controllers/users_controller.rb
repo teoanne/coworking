@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save(user_params)
+      session[:user_id] = @user.id
       flash[:notice] = "Your profile was created"
       redirect_to root_path
     else
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
       flash[:notice] = "There was an error while updating your profile"
       render :new
     end
+  end
 
   def show
     
@@ -45,6 +47,5 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find_by(params[:id])
   end
-
 
 end

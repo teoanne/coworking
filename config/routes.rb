@@ -11,12 +11,12 @@ Coworking::Application.routes.draw do
     member do
       post :vote
     end
-  end
     resources :comments, only: [:create] do
       member do
         post :vote
       end
     end
+  end
 
   resources :users, except: [:destroy]
   resources :categories, only: [:new, :create, :show]

@@ -1,1 +1,29 @@
-<%= render 'shared/title', title: "#{@user.username} profile page" %>
+<%= render 'shared/title', title: "#{@user.username}'s profile page" %>
+<div class="well">
+  <dl class="dl-horizontal">
+    <dt>Username: </dt>
+    <dd><%= @user.username %></dd>
+    <%#<dt>Time Zone: </dt>
+    <%#<dd><%= @user.time_zone %></dd>
+  </dl>
+</div>
+
+<h5><%= @user.username.capitalize %>'s Activities: </h5>
+  <ul class="nav nav-tabs">
+    <li class= "<%= "active" if params[:tab].nil? %>" >
+      <%= link_to "Spaces (#{@user.spaces.count})", user_path(@user) %>
+    </li>
+     <li class="<%= "active" if params[:tab] == "comments" %>" >
+      <%= link_to "Comments (#{@user.comments.count})", user_path(@user, tab: "comments") %>
+    </li>
+  </ul>
+
+  <% if params[:tab].nil? %>
+    <% @user.spaces.each do |space| %>
+      <%= render "spaces/space", space: space %>
+    <% end %>
+    <% elsif params[:tab] == "comments" %>
+    <% @user.comments.each do |comment| %>
+      <%= render "comments/comment", comment: comment %> <%# show_post: true %>
+    <% end %>
+  <% end %>
