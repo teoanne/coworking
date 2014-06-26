@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update]
-  before_action :require_user, except: [:index, :show]
+  before_action :require_user, except: [:index, :show, :edit]
 
   def index
     @spaces = Space.all
@@ -26,6 +26,7 @@ class SpacesController < ApplicationController
       flash[:notice] = "You have successfully added a coworking space!"
       redirect_to root_path
     else
+      flash[:danger] = "Sorry your co-working space could not be added right now."
       render :new
     end
   end
