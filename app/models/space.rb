@@ -11,4 +11,8 @@ class Space < ActiveRecord::Base
   validates :country, presence: true
   validates :phone, presence: true
   validates :description, presence: true
+
+  def total_votes
+    
+  end
 end
