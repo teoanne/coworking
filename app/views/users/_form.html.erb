@@ -1,4 +1,4 @@
-<div class="well">
+<div class="span4 well">
     <%= form_for @user do |f| %>
       <div class="form-group">
         <%= f.label :username %>
@@ -14,7 +14,7 @@
       <div>
       <div class="form-group">
         <%= f.label :password %>
-        <%= f.password_field, class: "form-control" %>
+        <%= f.password_field :password, class: "form-control" %>
       <div>
       <div class="form-group">
         <%= f.label :country %>

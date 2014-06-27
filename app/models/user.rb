@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 8 }, on: :create
-  validates :country, presence: true
+  validates_presence_of :country, :full_name
 
-  has_secure_password validation: false
+  has_secure_password validations: false #no password confirmation
   
 end

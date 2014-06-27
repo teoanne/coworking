@@ -1,11 +1,12 @@
 Coworking::Application.routes.draw do
 
-  root to: 'spaces#index'
+  root to: 'pages#front'
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
   get "/register", to: "users#new"
+  get "/home", to: 'spaces#index'
 
   resources :spaces, except: [:destroy] do
     member do
