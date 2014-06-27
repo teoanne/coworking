@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  has_many :spaces
-  has_many :comments
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
@@ -8,5 +6,8 @@ class User < ActiveRecord::Base
   validates_presence_of :country, :full_name
 
   has_secure_password validations: false #no password confirmation
+
+  has_many :spaces
+  has_many :comments
   
 end
