@@ -1,4 +1,3 @@
-#to insert carrierwave intialize code
 Carrierwave.configure do |config|
   if Rails.env.staging? || Rails.env.production?
     config.storage = :fog
