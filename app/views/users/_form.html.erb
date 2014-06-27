@@ -8,6 +8,18 @@
         <%= f.label :full_name %>
         <%= f.text_field :full_name, class: "form-control" %>
       <div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %>
+      <div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field, class: "form-control" %>
+      <div>
+      <div class="form-group">
+        <%= f.label :country %>
+        <%= f.text_field :country, class: "form-control" %>
+      <div>
         <%= f.submit(@user.new_record? ? "Register" : "Update Profile", class: "btn btn-primary") %>
       <% end %>
 </div>

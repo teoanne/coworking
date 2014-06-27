@@ -10,9 +10,9 @@
  *
  *= require_self
  *= require_tree .
+ *= require bootstrap
+ *= require rails_bootstrap_forms
  */
-
- @import "bootstrap";
 
 .quiet {
   color: #ababab;

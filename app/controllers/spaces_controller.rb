@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update]
-  before_action :require_user, except: [:index, :show, :edit]
+  before_action :require_user, except: [:index, :show, :edit, :vote]
 
   def index
     @spaces = Space.all

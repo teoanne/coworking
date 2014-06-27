@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(username: params[:username])
 
-    if user #and user.authenticate(params :password)
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:notice] = "You have logged in successfully"
       redirect_to root_path
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy
+  def delete
     session[:user_id] = nil
     flash[:error] = "You have logged out successfully"
     redirect_to root_path
