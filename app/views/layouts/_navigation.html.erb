@@ -1,75 +1,77 @@
-<div class="container">
-<ul class="nav">
-  <li>
-  <%= link_to "Coworkr", root_path, :class => 'brand' %>
-  </li>
-</ul>
-
-
-<div class="btn-group nav_item">
-  <%= link_to "#", class: "btn dropdown-toggle", "data-toggle" => "dropdown" do %>
-  Coworking Countries <span class="caret"></span>
-  <% end %>
-  <ul class="dropdown-menu">
-    <% Category.all.each do |category| %>
-      <li><%= link_to category.name, category_path(category) %></li>
-    <% end %>
-    <li class="divider"></li>
+<% if logged_in? %>
+  <div class="container">
+  <ul class="nav">
     <li>
-      <% if logged_in? %>
-      <%= link_to new_category_path do %>
-        <i class="icon-plus"></i>
-          Add new country
-      <% end %>
+    <%= link_to "Coworkr", root_path, :class => 'brand' %>
     </li>
-    <% end %>
   </ul>
-</div>
 
-<% if logged_in? %>
+
   <div class="btn-group nav_item">
-    <%= link_to 'List new Space', new_space_path, class: "btn btn-success" %>
-  </div>
-<% end %>
-
-<% if logged_in? %>
-<div class="btn-group nav_item pull-right">
-  <%= link_to "#", class: "btn dropdown-toggle", "data-toggle" => "dropdown" do %>
-    <%= current_user.username %><span class="caret"></span>
+    <%= link_to "#", class: "btn dropdown-toggle", "data-toggle" => "dropdown" do %>
+    Coworking Countries <span class="caret"></span>
     <% end %>
-
-
     <ul class="dropdown-menu">
+      <% Category.all.each do |category| %>
+        <li><%= link_to category.name, category_path(category) %></li>
+      <% end %>
+      <li class="divider"></li>
       <li>
-       <%= link_to edit_user_path(current_user) do %>
-       <i class="icon-pencil"></i>
-       Edit Profile
-       <% end %>
-      </li>
-      <li>
-        <%= link_to user_path(current_user) do %>
-        <i class="icon-user"></i>
-        View Profile
+        <% if logged_in? %>
+        <%= link_to new_category_path do %>
+          <i class="icon-plus"></i>
+            Add new country
         <% end %>
       </li>
-      <li>
-        <%= link_to logout_path do %>
-        <i class="icon-circle-arrow-left"></i>
-        Logout
-        <% end %>
-        </li>
+      <% end %>
     </ul>
-</div>
-<% else %>
-  <div class="btn-group nav_item pull-right">
-    <%= link_to 'Register', register_path, class: "btn btn-info" %>
   </div>
 
+  <% if logged_in? %>
+    <div class="btn-group nav_item">
+      <%= link_to 'List new Space', new_space_path, class: "btn btn-success" %>
+    </div>
+  <% end %>
+
+  <% if logged_in? %>
   <div class="btn-group nav_item pull-right">
-    <%= link_to 'Log In', login_path, class: "btn btn-success" %>
+    <%= link_to "#", class: "btn dropdown-toggle", "data-toggle" => "dropdown" do %>
+      <%= current_user.username %><span class="caret"></span>
+      <% end %>
+
+
+      <ul class="dropdown-menu">
+        <li>
+         <%= link_to edit_user_path(current_user) do %>
+         <i class="icon-pencil"></i>
+         Edit Profile
+         <% end %>
+        </li>
+        <li>
+          <%= link_to user_path(current_user) do %>
+          <i class="icon-user"></i>
+          View Profile
+          <% end %>
+        </li>
+        <li>
+          <%= link_to logout_path do %>
+          <i class="icon-circle-arrow-left"></i>
+          Logout
+          <% end %>
+          </li>
+      </ul>
+  </div>
+  <% else %>
+    <div class="btn-group nav_item pull-right">
+      <%= link_to 'Register', register_path, class: "btn btn-info" %>
+    </div>
+
+    <div class="btn-group nav_item pull-right">
+      <%= link_to 'Log In', login_path, class: "btn btn-success" %>
+    </div>
+  <% end %>
   </div>
 <% end %>
-</div>
 
 
 

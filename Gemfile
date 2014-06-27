@@ -10,6 +10,11 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'country_select'
+gem 'bootstrap-form'
+gem 'bcrypt-ruby'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'figaro'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -19,7 +24,15 @@ end
 group :development do
   gem 'quiet_assets'
   gem 'sqlite3'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
   gem 'pry'
+end
+
+group :test do
+  gem 'shoulda-matchers'
 end
 
 group :production do
