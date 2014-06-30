@@ -1,3 +1,29 @@
+
+.header {
+  font-size: 47px;
+  color: #130;
+}
+
+.white {
+  color: #111;
+  font-size: 18px;
+}
+
+.white a {
+  text-decoration: none;
+  color: #111;
+}
+
+
+.background-image {
+  background: url('coworking.jpg') no-repeat center center fixed;
+  background-size: 100%;
+  width: 1366px;
+  height: 730px;
+  margin-top: 0px;
+}
+
 .front {
-  margin-top: 120px;
+  font-size: 23px;
+  padding-top: 150px;
 }

@@ -12,7 +12,6 @@ gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'country_select'
 gem 'bootstrap-form'
 gem 'bcrypt-ruby'
-gem 'carrierwave'
 gem 'mini_magick'
 gem 'figaro'
 

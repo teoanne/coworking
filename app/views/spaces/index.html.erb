@@ -1,5 +1,7 @@
-<%= render "shared/title", title: "Latest co-working spaces" %>
+<div class="container">
+  <%= render "shared/title", title: "Latest co-working spaces" %>
 
-<% @spaces.each do |space| %>
-  <%= render "space", space: space %>
-<% end %>
+  <% @spaces.each do |space| %>
+    <%= render "space", space: space %>
+  <% end %>
+</div>

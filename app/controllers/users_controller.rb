@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save(user_params)
       session[:user_id] = @user.id
-      flash[:notice] = "Your profile was created"
+      flash[:notice] = "Welcome on board #{@user.full_name}! Glad to have you with us."
       redirect_to root_path
     else
       flash[:error] = "There was an error was creating your profile"
