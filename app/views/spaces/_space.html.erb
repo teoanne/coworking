@@ -2,13 +2,13 @@
   <div class="row">
     <div class="span0 well text-center">
       <% if logged_in? %>
-        <%= link_to vote_space_path(space, vote: true), method: "post", remote: true do %>
-        <i class="icon-arrow-up"></i>
-        <% end %>
-        <% end %>
-         <p><span id="space_<%=space.id%>_votes"><%= space.total_votes %> votes</span></p>
+        <%= link_to vote_space_path(space, vote: true), method: "post" do %> 
+          <i class="icon-arrow-up"></i>
+          <% end %>
+      <% end %>
+        <p><span id="space_<%=space.id%>_votes"><%= space.total_votes %> votes</span></p>
          <% if logged_in? %>
-        <%= link_to vote_space_path(space, vote: false), method: "post", remote: true do %>
+            <%= link_to vote_space_path(space, vote: false), method: "post" do %> 
           <i class="icon-arrow-down"></i>
         <% end %>
       <% end %>

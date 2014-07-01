@@ -5,7 +5,6 @@
       on <%= link_to comment.space.name, space_path(comment.space) %>
     <% end %>
     <p><span class="quiet">by </span><%= link_to comment.user.username, user_path(comment.user) %> at 
-    <span class="quiet"><%=# display_datetime(comment.created_at) %></span></p>  
-  </div>
+    <span class="quiet"><%= display_datetime(comment.created_at) %></span></p>
 </div>
 

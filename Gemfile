@@ -14,6 +14,8 @@ gem 'bootstrap-form'
 gem 'bcrypt-ruby'
 gem 'mini_magick'
 gem 'figaro'
+gem 'fabrication'
+gem 'faker'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

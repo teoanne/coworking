@@ -3,7 +3,10 @@ require 'rails_helper'
 describe SpacesController do
   
   describe "GET Index" do
-    it 'should show the most recent 10 spaces around the world'
+    it 'should show the spaces arranged by total votes' do
+      space1 = Fabricate(:space)
+      expect(@spaces).to
+    end
   end
 
   describe 'GET Show' do

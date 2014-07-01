@@ -3,7 +3,7 @@ class SpacesController < ApplicationController
   before_action :require_user, except: [:index, :show, :edit, :vote]
 
   def index
-    @spaces = Space.all
+    @spaces = Space.all.sort_by {|x| x.total_votes}.reverse
   end
 
   def show
@@ -24,7 +24,7 @@ class SpacesController < ApplicationController
 
     if @space.save(space_params)
       flash[:notice] = "You have successfully added a coworking space!"
-      redirect_to root_path
+      redirect_to home_path
     else
       flash[:danger] = "Sorry your co-working space could not be added right now."
       render :new
