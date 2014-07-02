@@ -1,12 +1,15 @@
 <div class="container">
-  <%= render 'shared/title', title: "#{@user.username}'s profile page" %>
+  <%= render 'shared/title', title: "#{@user.username.capitalize}'s profile page" %>
   <div class="well">
     <dl class="dl-horizontal">
       <dt>Username: </dt>
-      <dd><%= @user.username %></dd>
+      <dd><%= @user.username.capitalize %></dd>
       <%#<dt>Time Zone: </dt>
-      <%#<dd><%= @user.time_zone %></dd>
+      <%#<dd><%= @user.time_zone %> 
     </dl>
+    <div class="deactivate">
+      <%= link_to "Delete Account", deactivate_path, class: "btn btn-danger" %>
+    </div>
   </div>
 
   <h5><%= @user.username.capitalize %>'s Activities: </h5>

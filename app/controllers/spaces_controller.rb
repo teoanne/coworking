@@ -1,9 +1,11 @@
 class SpacesController < ApplicationController
-  before_action :set_space, only: [:show, :edit, :update]
+  before_action :set_space, only: [:show, :edit, :update, :vote]
   before_action :require_user, except: [:index, :show, :edit, :vote]
 
   def index
     @spaces = Space.all.sort_by {|x| x.total_votes}.reverse
+    @spaces = Space.all.paginate(:page => params[:page], :per_page => 5)
+    
   end
 
   def show
@@ -20,8 +22,9 @@ class SpacesController < ApplicationController
   end
 
   def create
-    @space = Space.new(space_params)
-
+    @space = Space.new(space_params)#.merge!(category_ids: current_user.id))
+    @category = Category.create(category: params[:category])
+    binding.pry
     if @space.save(space_params)
       flash[:notice] = "You have successfully added a coworking space!"
       redirect_to home_path

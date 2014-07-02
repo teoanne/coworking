@@ -12,7 +12,10 @@ class Space < ActiveRecord::Base
   validates :city, presence: true
   validates :country, presence: true
   validates :phone, presence: true
+  #validates_format_of :phone, with: { ^[0-9]*$ } to redo this regex
   validates :description, presence: true
+
+  #self.per_page = 10
 
   def display_most_recent
     self.first(10)

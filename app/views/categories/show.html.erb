@@ -1,6 +1,9 @@
-<% all_spaces = link_to("Worldwide", spaces_path) %>
-<%= render 'shared/title', title: "#{all_spaces} &raquo; Coworking spaces in #{@category.id}".html_safe %>
+<div class="container">
+  <% all_spaces = link_to("Worldwide", spaces_path) %>
+  <%= render 'shared/title', title: "#{all_spaces} &raquo; Coworking spaces in #{@category.name}".html_safe %>
 
-<% @category.spaces.each do |space| %>
-  <%= render 'spaces/space', space: space %>
-<% end %>
+  <% @category.spaces.each do |space| %>
+    <%= render 'spaces/space', space: space %>
+  <% end %>
+  
+</div>

@@ -10,5 +10,13 @@ class User < ActiveRecord::Base
   has_many :spaces
   has_many :comments
   has_many :votes
+
+  def deactivate!
+    update_column(:active, false)
+  end
+
+  def activate!
+    update_column(:active, true)
+  end
   
 end

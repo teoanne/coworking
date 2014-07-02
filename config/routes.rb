@@ -1,14 +1,16 @@
 Coworking::Application.routes.draw do
 
-  root to: 'pages#front'
+  root to: 'pages#front' 
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#delete"
   get "/register", to: "users#new"
   get "/home", to: 'spaces#index'
+  get "/deactivate", to: 'users#deactivate'
 
   resources :spaces, except: [:destroy] do
+    # to cater for posts/2/vote 
     member do
       post :vote
     end
@@ -20,7 +22,11 @@ Coworking::Application.routes.draw do
   end
 
   resources :users, except: [:destroy]
-  resources :categories, only: [:new, :create, :show]
+  resources :categories, only: [:show]
+
+  namespace :admin do
+    resources :categories, only: [:new, :create]
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
