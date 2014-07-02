@@ -12,6 +12,7 @@ class Space < ActiveRecord::Base
   validates :city, presence: true
   validates :country, presence: true
   validates :phone, presence: true
+  validates_format_of :phone, with: "^[0-9]*$"
   validates :description, presence: true
 
   #self.per_page = 10

@@ -1,6 +1,6 @@
 Coworking::Application.routes.draw do
 
-  root to: 'pages#front'
+  root to: 'pages#front' 
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
@@ -21,7 +21,11 @@ Coworking::Application.routes.draw do
   end
 
   resources :users, except: [:destroy]
-  resources :categories, only: [:new, :create, :show]
+  resources :categories, only: [:show]
+
+  namespace :admin do
+    resources :categories, only: [:new, :create]
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
