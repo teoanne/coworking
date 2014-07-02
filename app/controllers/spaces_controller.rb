@@ -22,8 +22,9 @@ class SpacesController < ApplicationController
   end
 
   def create
-    @space = Space.new(space_params)
-
+    @space = Space.new(space_params)#.merge!(category_ids: current_user.id))
+    @category = Category.create(category: params[:category])
+    binding.pry
     if @space.save(space_params)
       flash[:notice] = "You have successfully added a coworking space!"
       redirect_to home_path

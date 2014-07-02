@@ -34,8 +34,20 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    
+  def show 
+  end
+
+  def deactivate
+    @user = current_user
+    @user.deactivate!
+    flash[:danger] = "Your account has been deleted. If you wish to rejoin, just sign in again with your previous username and password."
+    redirect_to logout_path
+  end
+
+  def reactivate
+    @user.activate!
+    flash[:success] = "You have rejoined Coworkr. Welcome back #{@user.name}!"
+    redirect_to home_path
   end
 
   private

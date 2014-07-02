@@ -7,6 +7,7 @@ Coworking::Application.routes.draw do
   get "/logout", to: "sessions#delete"
   get "/register", to: "users#new"
   get "/home", to: 'spaces#index'
+  get "/deactivate", to: 'users#deactivate'
 
   resources :spaces, except: [:destroy] do
     # to cater for posts/2/vote 
