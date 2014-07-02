@@ -9,5 +9,6 @@ class User < ActiveRecord::Base
 
   has_many :spaces
   has_many :comments
+  has_many :votes
   
 end

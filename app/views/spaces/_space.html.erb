@@ -1,31 +1,33 @@
-<div class="row">
-  <div class="span0 well text-center">
-    <% if logged_in? %>
-      <%= link_to vote_space_path(space, vote: true), method: "post", remote: true do %>
-      <i class="icon-arrow-up"></i>
+
+  <div class="row">
+    <div class="span0 well text-center">
+      <% if logged_in? %>
+        <%= link_to vote_space_path(space, vote: true), method: "post" do %> 
+          <i class="icon-arrow-up"></i>
+          <% end %>
       <% end %>
+        <p><span id="space_<%=space.id%>_votes"><%= space.total_votes %> votes</span></p>
+         <% if logged_in? %>
+            <%= link_to vote_space_path(space, vote: false), method: "post" do %> 
+          <i class="icon-arrow-down"></i>
+        <% end %>
       <% end %>
-       <p><span id="space_<%=space.id%>_votes"><%= space.total_votes %> votes</span></p>
-       <% if logged_in? %>
-      <%= link_to vote_space_path(space, vote: false), method: "post", remote: true do %>
-        <i class="icon-arrow-down"></i>
-      <% end %>
-    <% end %>
+    </div>
+
+    <div class="span9 well">
+      <span class="badge"><%#= link_to category.name, category_path(category) %></span>
+        <h4><%= link_to space.name, space_path(space) %></h4>
+          <p><%= space.city %></p>
+          <p><%= space.country %></p>
+          <p><span class="quiet">posted by </span><%# link_to space.user.username, user_path(space.user) %> at <span class="quiet"><%#display_datetime(space.created_at) %></span></p>
+        <small>
+          <span>
+            <%= link_to("#{space.comments.size} comments", space_path(space)) %>
+          </span>
+        </small>
+    </div>
   </div>
 
-  <div class="span9 well">
-    <span class="badge"><%#= link_to category.name, category_path(category) %></span>
-      <h4><%= link_to space.name, space_path(space) %></h4>
-        <p><%= space.city %></p>
-        <p><%= space.country %></p>
-        <p><span class="quiet">posted by </span><%# link_to space.user.username, user_path(space.user) %> at <span class="quiet"><%#display_datetime(space.created_at) %></span></p>
-      <small>
-        <span>
-          <%= link_to("#{space.comments.size} comments", space_path(space)) %>
-        </span>
-      </small>
-  </div>
-</div>
 
 
   
