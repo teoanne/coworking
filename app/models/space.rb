@@ -14,6 +14,8 @@ class Space < ActiveRecord::Base
   validates :phone, presence: true
   validates :description, presence: true
 
+  #self.per_page = 10
+
   def display_most_recent
     self.first(10)
   end

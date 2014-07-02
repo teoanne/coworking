@@ -16,6 +16,8 @@ gem 'mini_magick'
 gem 'figaro'
 gem 'fabrication'
 gem 'faker'
+gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

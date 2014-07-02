@@ -9,6 +9,7 @@ Coworking::Application.routes.draw do
   get "/home", to: 'spaces#index'
 
   resources :spaces, except: [:destroy] do
+    # to cater for posts/2/vote 
     member do
       post :vote
     end

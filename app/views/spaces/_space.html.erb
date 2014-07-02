@@ -6,7 +6,7 @@
           <i class="icon-arrow-up"></i>
           <% end %>
       <% end %>
-        <p><span id="space_<%=space.id%>_votes"><%= space.total_votes %> votes</span></p>
+        <p><span id="spaces_<%=space.id%>_votes"><%= space.total_votes %> votes</span></p>
          <% if logged_in? %>
             <%= link_to vote_space_path(space, vote: false), method: "post" do %> 
           <i class="icon-arrow-down"></i>
