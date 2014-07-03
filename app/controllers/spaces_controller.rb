@@ -1,10 +1,12 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :vote]
-  before_action :require_user, except: [:index, :show, :edit, :vote]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update]
 
   def index
-    @spaces = Space.all.sort_by {|x| x.total_votes}.reverse
-    @spaces = Space.all.paginate(:page => params[:page], :per_page => 5)
+    #@spaces = Space.all.paginate(:page => params[:page], :per_page => 5) #
+    @spaces = Space.order("actual_votes").paginate(:page => params[:page], :per_page => 5)
+    #all.sort_by{|x| x.total_votes}.reverse
     
   end
 
@@ -22,9 +24,11 @@ class SpacesController < ApplicationController
   end
 
   def create
-    @space = Space.new(space_params)#.merge!(category_ids: current_user.id))
-    @category = Category.create(category: params[:category])
     binding.pry
+    @space = Space.new(space_params)#.merge!(category_ids: current_user.id))
+    #@category = Category.create(category: params[:category])
+    @space.user = current_user
+
     if @space.save(space_params)
       flash[:notice] = "You have successfully added a coworking space!"
       redirect_to home_path
@@ -41,9 +45,9 @@ class SpacesController < ApplicationController
   def update
     if @space.update(space_params)
       flash[:success] = "Your co-working space details were updated."
-      redirect_to root_path
+      redirect_to home_path
     else
-      flash[:error] = "There were some errors in your submission."
+      flash[:danger] = "There were some errors in your submission."
       render :new
     end
 
@@ -52,6 +56,10 @@ class SpacesController < ApplicationController
   def vote
      @vote = Vote.create(voteable: @space, user: current_user, vote: params[:vote]) # this last params here includes both up vote and down vote
     
+    if @vote.valid?
+      @space.actual_votes!
+    end
+
     respond_to do |format|
       format.html do
         if @vote.valid?
@@ -80,6 +88,10 @@ class SpacesController < ApplicationController
     if !logged_in?
       flash[:notice] = "You need to be logged in to do that."
     end
+  end
+
+  def require_same_user
+    access_denied unless logged_in? && (@space.user == current_user || current_user.admin?)
   end
 
 end

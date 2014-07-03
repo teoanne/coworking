@@ -2,7 +2,7 @@
   <% all_spaces = link_to("Worldwide", spaces_path) %>
   <%= render 'shared/title', title: "#{all_spaces} &raquo; Coworking spaces in #{@category.name}".html_safe %>
 
-  <% @category.spaces.each do |space| %>
+  <% Space.where(@category.name = "Singapore") do |space| %>
     <%= render 'spaces/space', space: space %>
   <% end %>
   
