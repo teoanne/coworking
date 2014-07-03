@@ -81,7 +81,7 @@ class SpacesController < ApplicationController
   end
 
   def space_params
-    params.require(:space).permit(:name, :street_address, :city, :country, :phone, :description)
+    params.require(:space).permit(:name, :street_address, :city, :country, :phone, :description, category_name:[]) # note added category_name to capture the data submitted through the form
   end
 
   def require_user
