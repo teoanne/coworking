@@ -25,9 +25,9 @@ class SpacesController < ApplicationController
 
   def create
     binding.pry
-    @space = Space.new(space_params)#.merge!(category_ids: current_user.id))
-    #@category = Category.create(category: params[:category])
-    @space.user = current_user
+    @space = Space.new(space_params.merge!(user_id: current_user.id))
+    #category = Category.create(params[:category_name]) 
+    #@space.user = current_user
 
     if @space.save(space_params)
       flash[:notice] = "You have successfully added a coworking space!"
@@ -81,7 +81,7 @@ class SpacesController < ApplicationController
   end
 
   def space_params
-    params.require(:space).permit(:name, :street_address, :city, :country, :phone, :description, category_name:[]) # note added category_name to capture the data submitted through the form
+    params.require(:space).permit(:name, :street_address, :city, :country, :phone, :description)#, category_name:[]) # note added category_name to capture the data submitted through the form
   end
 
   def require_user
