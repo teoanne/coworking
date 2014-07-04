@@ -25,6 +25,14 @@ class Space < ActiveRecord::Base
     self.categories = Category.find__or_create_by_name(name) unless name.blank?
   end
 
+  def list_region
+    if self.categories.any?
+      self.categories.first.name
+    else
+      "Not Specified"
+    end
+  end
+
   def actual_votes!
     self.actual_votes = self.total_votes
     self.save
