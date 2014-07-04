@@ -9,6 +9,9 @@
       </p>
     <% end %>
     <span class="badge"><%#= link_to @category.name, category_path(@category) %></span>
+    <div class="photo">
+      <img src="#{@space.main_photo}"/>
+    </div>
     <p>Address: <%= @space.street_address %></p>
     <p>City: <%= @space.city %></p>
     <p>Country: <%= @space.country %></p>
