@@ -30,6 +30,15 @@
       <%= f.label :description %>
       <%= f.text_area :description, class: "form-control" %>
     <div>
+    <div class="form-group">
+      <%= f.label :main_photo %>
+      <%= f.file_field :main_photo, class: "btn btn-file form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :additional_photos %>
+      <%= f.file_field :additional_photos, class: "btn btn-file" %>
+    </div>
+    <br/>
       <%= f.submit(@space.new_record? ? "Add this space!" : "Update Space", class: "btn btn-primary") %>
     <% end %>
    

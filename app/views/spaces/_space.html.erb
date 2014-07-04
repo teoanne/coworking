@@ -15,11 +15,10 @@
     </div>
 
     <div class="span9 well">
-      <span class="badge"><%#= link_to category.name, category_path(category) %></span>
+      <span class="badge"><%= link_to space.list_region, category_path(space.categories) %></span>
         <h4><%= link_to space.name, space_path(space) %></h4>
           <p><%= space.city %></p>
           <p><%= space.country %></p>
-          <p> Region: <%= link_to space.list_region, category_path(space.categories) %></p>
           <p><span class="quiet">posted by <%= link_to space.user.full_name, user_path(space.user) %> on
             <%= display_datetime(space.created_at) %></span></p>
         <small>

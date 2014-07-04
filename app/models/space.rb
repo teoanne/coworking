@@ -15,6 +15,10 @@ class Space < ActiveRecord::Base
   #validates_format_of :phone, with: { ^[0-9]*$ } to redo this regex
   validates :description, presence: true
 
+  mount_uploader :main_photo, MainPhotoUploader
+  mount_uploader :additional_photos, AdditionalPhotosUploader
+  
+
   #self.per_page = 10
 
   #def category_name #virtual attribute to catch creating categories on the fly. Getter method
