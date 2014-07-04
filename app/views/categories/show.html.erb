@@ -1,8 +1,8 @@
 <div class="container">
   <% all_spaces = link_to("Worldwide", spaces_path) %>
-  <%= render 'shared/title', title: "#{all_spaces} &raquo; Coworking spaces in #{@category.name}".html_safe %>
+  <%= render 'shared/title', title: "#{all_spaces} &raquo; Co-working spaces in #{@category.name} (#{@category.spaces.count})".html_safe %>
 
-  <% Space.where(@category.name = "Singapore") do |space| %>
+  <% @category.spaces.each do |space| %>
     <%= render 'spaces/space', space: space %>
   <% end %>
   

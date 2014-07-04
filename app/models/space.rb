@@ -17,13 +17,13 @@ class Space < ActiveRecord::Base
 
   #self.per_page = 10
 
-  def category_name #virtual attribute to catch creating categories on the fly. Getter method
-    categories.name if categories
-  end
+  #def category_name #virtual attribute to catch creating categories on the fly. Getter method
+    #categories.name if categories
+  #end
 
-  def category_name=(name) #Setter method
-    self.categories = Category.find__or_create_by_name(name) unless name.blank?
-  end
+  #def category_name=(name) #Setter method
+    #self.categories = Category.find__or_create_by_name(name) unless name.blank?
+  #end
 
   def list_region
     if self.categories.any?

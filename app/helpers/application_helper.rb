@@ -1,6 +1,6 @@
 module ApplicationHelper
 
   def display_datetime(dt)
-    dt.strftime("%d/%m/%Y %l:%M%P %Z")
+    dt.strftime("%d/%m/%Y")
   end
 end
