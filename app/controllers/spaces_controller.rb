@@ -5,7 +5,7 @@ class SpacesController < ApplicationController
 
   def index
     #@spaces = Space.all.paginate(:page => params[:page], :per_page => 5) #
-    @spaces = Space.order("actual_votes").paginate(:page => params[:page], :per_page => 5)
+    @spaces = Space.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
     #all.sort_by{|x| x.total_votes}.reverse
     
   end
@@ -24,7 +24,6 @@ class SpacesController < ApplicationController
   end
 
   def create
-    binding.pry
     @space = Space.new(space_params.merge!(user_id: current_user.id))
     #category = Category.create(params[:category_name]) 
     #@space.user = current_user

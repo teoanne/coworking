@@ -1,25 +1,27 @@
 <div class="container">
-  <%= render "shared/title", title: "Details of #{@space.name}" %>
+  <%= render "shared/title", title: "Space name: #{@space.name}" %>
 
   <%# photo of the space? %>
   <div class="well">
     <% if logged_in? and current_user == @space.user %>
-      <p class="pull-right">
-        [<%= link_to "Edit this Space", edit_space_path(@space) %>]
+      <p class="pull-right edit">
+        [ <%= link_to "Edit this Space", edit_space_path(@space) %> ]
       </p>
     <% end %>
     <span class="badge"><%#= link_to @category.name, category_path(@category) %></span>
-    <div class="photo">
-      <img src="#{@space.main_photo}"/>
+    <div class="main_photo">
+      <%= image_tag @space.main_photo.to_s %>
     </div>
-    <p>Address: <%= @space.street_address %></p>
-    <p>City: <%= @space.city %></p>
-    <p>Country: <%= @space.country %></p>
-    <p>Phone number: <%= @space.phone %></p>
-    <p>Description: <%= @space.description %></p>
-    <p></p>
-    <span class="glyphicon glyphicon-thumbs-up"></span>
-    <span class="glyphicon glyphicon-thumbs-down"></span>
+    <div class="details">
+      <p>Address: <%= @space.street_address %></p>
+      <p>City: <%= @space.city %></p>
+      <p>Country: <%= @space.country %></p>
+      <p>Phone number: <%= @space.phone %></p>
+      <p>Description: <%= @space.description %></p>
+      <p></p>
+      <span class="glyphicon glyphicon-thumbs-up"></span>
+      <span class="glyphicon glyphicon-thumbs-down"></span>
+    </div>
 
   </div>
 
