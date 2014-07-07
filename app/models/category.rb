@@ -4,5 +4,8 @@ class Category < ActiveRecord::Base
 
   validates :name, presence: true
 
+  def exists?
+    @category.name
+  end
   
 end

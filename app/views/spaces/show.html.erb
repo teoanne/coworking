@@ -5,7 +5,7 @@
   <div class="well">
     <% if logged_in? and current_user == @space.user %>
       <p class="pull-right edit">
-        [ <%= link_to "Edit this Space", edit_space_path(@space) %> ]
+        <span class="quiet">[ <%= link_to "Edit this Space", edit_space_path(@space) %> ]</span>
       </p>
     <% end %>
     <span class="badge"><%#= link_to @category.name, category_path(@category) %></span>

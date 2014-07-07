@@ -15,18 +15,18 @@
     </div>
 
     <div class="span9 well">
-      <span class="badge"><%= link_to space.list_region, category_path(space.categories) if space.categories %></span>
+      <span class="badge"><%= link_to space.list_region, category_path(space.categories) %></span>
         <h4><%= link_to space.name, space_path(space) %></h4>
           <p><%= space.city %></p>
           <p><%= space.country %></p>
-          <p><span class="quiet">posted by <%= link_to space.user.full_name, user_path(space.user) %> on
-            <%= display_datetime(space.created_at) %></span></p>
+          <p><span class="quiet">posted by <%= link_to space.user.full_name, user_path(space.user) %>
+            <%= time_ago_in_words(space.created_at) %> ago </span></p>
         <div class="add_photo">
           <%= image_tag space.additional_photos.to_s %>
         </div>
         <small>
           <span>
-            <%= link_to("#{space.comments.size} comments", space_path(space)) %>
+            <%= link_to("#{pluralize(space.comments.size, 'comment')}", space_path(space)) %>
           </span>
         </small>
     </div>
