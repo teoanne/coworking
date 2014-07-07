@@ -5,7 +5,7 @@ class SpacesController < ApplicationController
 
   def index
     #@spaces = Space.all.paginate(:page => params[:page], :per_page => 5) #
-    @spaces = Space.order("actual_votes").paginate(:page => params[:page], :per_page => 5)
+    @spaces = Space.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
     #all.sort_by{|x| x.total_votes}.reverse
     
   end
@@ -24,10 +24,9 @@ class SpacesController < ApplicationController
   end
 
   def create
-    binding.pry
-    @space = Space.new(space_params)#.merge!(category_ids: current_user.id))
-    #@category = Category.create(category: params[:category])
-    @space.user = current_user
+    @space = Space.new(space_params.merge!(user_id: current_user.id))
+    #category = Category.create(params[:category_name]) 
+    #@space.user = current_user
 
     if @space.save(space_params)
       flash[:notice] = "You have successfully added a coworking space!"
@@ -81,7 +80,7 @@ class SpacesController < ApplicationController
   end
 
   def space_params
-    params.require(:space).permit(:name, :street_address, :city, :country, :phone, :description, category_name:[]) # note added category_name to capture the data submitted through the form
+    params.require(:space).permit(:name, :street_address, :city, :country, :phone, :description, :main_photo, :additional_photos)#, category_name:[]) # note added category_name to capture the data submitted through the form
   end
 
   def require_user

@@ -15,14 +15,26 @@ class Space < ActiveRecord::Base
   #validates_format_of :phone, with: { ^[0-9]*$ } to redo this regex
   validates :description, presence: true
 
+  mount_uploader :main_photo, MainPhotoUploader
+  mount_uploader :additional_photos, AdditionalPhotosUploader
+  
+
   #self.per_page = 10
 
-  def category_name #virtual attribute to catch creating categories on the fly. Getter method
-    categories.name if categories
-  end
+  #def category_name #virtual attribute to catch creating categories on the fly. Getter method
+    #categories.name if categories
+  #end
 
-  def category_name=(name) #Setter method
-    self.categories = Category.find__or_create_by_name(name) unless name.blank?
+  #def category_name=(name) #Setter method
+    #self.categories = Category.find__or_create_by_name(name) unless name.blank?
+  #end
+
+  def list_region
+    if self.categories.any?
+      self.categories.first.name
+    else
+      "Not Specified"
+    end
   end
 
   def actual_votes!

@@ -3,4 +3,9 @@ class Category < ActiveRecord::Base
   has_many :spaces, -> { order("created_at DESC") }, through: :space_categories
 
   validates :name, presence: true
+
+  def exists?
+    @category.name
+  end
+  
 end

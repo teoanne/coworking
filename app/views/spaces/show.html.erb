@@ -1,22 +1,27 @@
 <div class="container">
-  <%= render "shared/title", title: "Details of #{@space.name}" %>
+  <%= render "shared/title", title: "Space name: #{@space.name}" %>
 
   <%# photo of the space? %>
   <div class="well">
-  <% if logged_in? and current_user == @space.user %>
-    <p class="pull-right">
-      [<%= link_to "Edit this Space", edit_space_path(@space) %>]
-    </p>
-  <% end %>
+    <% if logged_in? and current_user == @space.user %>
+      <p class="pull-right edit">
+        <span class="quiet">[ <%= link_to "Edit this Space", edit_space_path(@space) %> ]</span>
+      </p>
+    <% end %>
     <span class="badge"><%#= link_to @category.name, category_path(@category) %></span>
-    <p>Address: <%= @space.street_address %></p>
-    <p>City: <%= @space.city %></p>
-    <p>Country: <%= @space.country %></p>
-    <p>Phone number: <%= @space.phone %></p>
-    <p>Description: <%= @space.description %></p>
-    <p></p>
-    <span class="glyphicon glyphicon-thumbs-up"></span>
-    <span class="glyphicon glyphicon-thumbs-down"></span>
+    <div class="main_photo">
+      <%= image_tag @space.main_photo.to_s %>
+    </div>
+    <div class="details">
+      <p>Address: <%= @space.street_address %></p>
+      <p>City: <%= @space.city %></p>
+      <p>Country: <%= @space.country %></p>
+      <p>Phone number: <%= @space.phone %></p>
+      <p>Description: <%= @space.description %></p>
+      <p></p>
+      <span class="glyphicon glyphicon-thumbs-up"></span>
+      <span class="glyphicon glyphicon-thumbs-down"></span>
+    </div>
 
   </div>
 
@@ -26,7 +31,7 @@
   <%= form_for [@space, @comment] do |f| %>
     <div class="control-group">
       <%= f.label :body, "Leave a comment" %>
-      <%= f.text_area :body, rows: 8, class: "span4" %>
+      <%= f.text_area :body, rows: 4, class: "span12" %>
     </div>
      <%= f.submit "Create comment", class: "btn btn-primary" %>
   <% end %>
