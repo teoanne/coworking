@@ -76,7 +76,7 @@ class SpacesController < ApplicationController
   private
 
   def set_space
-    @space = Space.find(params[:id])
+    @space = Space.find_by(slug: params[:id])
   end
 
   def space_params
