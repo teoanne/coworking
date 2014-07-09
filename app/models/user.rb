@@ -12,12 +12,22 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :votes
 
+  before_save :generate_slug
+
   def deactivate!
     update_column(:active, false)
   end
 
   def activate!
     update_column(:active, true)
+  end
+
+  def to_param
+    self.slug
+  end
+
+  def generate_slug
+    self.slug = self.username.downcase
   end
   
 end

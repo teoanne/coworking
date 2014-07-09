@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140704073124) do
+ActiveRecord::Schema.define(version: 20140709163421) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "comments", force: true do |t|
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140704073124) do
     t.integer  "actual_votes",      default: 0
     t.string   "main_photo"
     t.string   "additional_photos"
+    t.string   "slug"
   end
 
   create_table "users", force: true do |t|
@@ -59,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140704073124) do
     t.string   "password_digest"
     t.boolean  "admin"
     t.boolean  "active",          default: true
+    t.string   "slug"
   end
 
   create_table "votes", force: true do |t|

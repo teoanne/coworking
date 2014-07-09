@@ -17,6 +17,8 @@ class Space < ActiveRecord::Base
 
   mount_uploader :main_photo, MainPhotoUploader
   mount_uploader :additional_photos, AdditionalPhotosUploader
+
+  #before_save :generate_slug
   
 
   #self.per_page = 10
@@ -57,4 +59,7 @@ class Space < ActiveRecord::Base
   def upvote
     self.votes.where(vote: true).size
   end
+
+  #def generate_slug
+  #end
 end
