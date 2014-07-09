@@ -4,8 +4,18 @@ class Category < ActiveRecord::Base
 
   validates :name, presence: true
 
+  before_save :generate_slug
+
   def exists?
     @category.name
+  end
+
+  def generate_slug
+    self.slug = self.name.downcase
+  end
+
+  def to_param
+    self.slug
   end
   
 end

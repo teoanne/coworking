@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 
   def show
     #@category = Category.find_by(params[:name])\
-    @category = Category.find(params[:id])
+    @category = Category.find_by(slug: params[:id])
   end
 
   #def create
