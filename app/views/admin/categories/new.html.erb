@@ -3,10 +3,10 @@
   <div class="well span9">
       <%= form_for [:admin, @category] do |f| %>
         <div class="form-group">
-          <%= f.label :name, "Country" %>
+          <%= f.label :name, "Add Region" %>
           <%= f.text_field :name, class: "form-control" %>
         <div>
-          <%= f.submit "Add this country", class: "btn btn-primary" %>
+          <%= f.submit "Add this region", class: "btn btn-primary" %>
         <% end %>
      
   </div>

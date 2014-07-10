@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :require_user, only: [:show]
+  before_action :require_same_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -54,6 +56,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:full_name, :password, :username, :country, :email)
+  end
+
+  def require_same_user
+    access_denied unless logged_in? && (@user == current_user || current_user.admin?)
   end
 
   def set_user

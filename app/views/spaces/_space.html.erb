@@ -22,7 +22,7 @@
           <p><span class="quiet">posted by <%= link_to space.user.full_name, user_path(space.user) %>
             <%= time_ago_in_words(space.created_at) %> ago </span></p>
         <div class="add_photo">
-          <%= image_tag space.additional_photos.to_s %>
+          <%= link_to (image_tag space.additional_photos.to_s), space_path(space) %>
         </div>
         <small>
           <span>
