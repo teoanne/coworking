@@ -34,6 +34,10 @@
       <%= f.label :additional_photos %>
       <%= f.file_field :additional_photos, class: "btn btn-file" %>
     </p>
+    <p>
+      <%= f.label :remote_main_photo_url, "or add an image from a URL" %>
+      <%= f.text_field :remote_main_photo_url %>
+    </p>
     <br/>
       <%= f.submit(@space.new_record? ? "Add this space!" : "Update Space", class: "btn btn-primary") %>
     <% end %>
