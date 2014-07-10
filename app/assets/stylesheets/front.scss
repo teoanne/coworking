@@ -1,7 +1,7 @@
 
 .header {
   font-size: 47px;
-  color: #130;
+  color: #000;
 }
 
 .white {
@@ -19,12 +19,14 @@
   background: url('coworking.jpg') no-repeat center center fixed;
   background-size: 100%;
   width: 1366px;
-  height: 730px;
+  height: 680px;
   margin-top: 0px;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .front {
+  position: absolute;
   font-size: 23px;
   padding-top: 150px;
+  padding-left: 150px;
 }

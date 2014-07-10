@@ -36,7 +36,7 @@
      <%= f.submit "Create comment", class: "btn btn-primary" %>
   <% end %>
 
-  <%= link_to "Back to List of All Spaces", home_path %>
+  <h5><%= link_to "Back to List of All Spaces", home_path %></h5>
 
   <h4>Comments:</h4>
     <% @space.comments.each do |comment| %>

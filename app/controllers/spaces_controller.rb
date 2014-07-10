@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :vote]
-  before_action :require_user, except: [:index, :show]
+  before_action :require_user, only: [:vote, :new]
   before_action :require_same_user, only: [:edit, :update]
 
   def index
@@ -81,12 +81,6 @@ class SpacesController < ApplicationController
 
   def space_params
     params.require(:space).permit(:name, :street_address, :city, :country, :phone, :description, :main_photo, :additional_photos)#, category_name:[]) # note added category_name to capture the data submitted through the form
-  end
-
-  def require_user
-    if !logged_in?
-      flash[:notice] = "You need to be logged in to do that."
-    end
   end
 
   def require_same_user
