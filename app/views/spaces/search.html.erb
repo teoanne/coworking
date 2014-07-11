@@ -1,8 +1,9 @@
 <div class="container">
-  <%= render "shared/title", title: "Search Results" %>
+  <%= render "shared/title", title: "#{pluralize(@results.count, 'result')} found" %>
 
-  <% @spaces.each do |space| %>
+  <% @results.each do |space| %>
     <%= render "space", space: space %>
   <% end %>
-  <%= will_paginate @spaces %>
+
+  
 </div>
