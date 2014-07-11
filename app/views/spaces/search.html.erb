@@ -1,0 +1,9 @@
+<div class="container">
+  <%= render "shared/title", title: "#{pluralize(@results.count, 'result')} found" %>
+
+  <% @results.each do |space| %>
+    <%= render "space", space: space %>
+  <% end %>
+
+  
+</div>

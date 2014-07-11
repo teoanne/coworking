@@ -14,6 +14,9 @@ Coworking::Application.routes.draw do
     member do
       post :vote
     end
+    collection do
+      get :search, to: "spaces#search"
+    end
     resources :comments, only: [:create] do
       member do
         post :vote
