@@ -1,0 +1,8 @@
+<div class="container">
+  <%= render "shared/title", title: "Search Results" %>
+
+  <% @spaces.each do |space| %>
+    <%= render "space", space: space %>
+  <% end %>
+  <%= will_paginate @spaces %>
+</div>

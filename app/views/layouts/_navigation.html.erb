@@ -31,6 +31,12 @@
     <div class="btn-group nav_item">
       <%= link_to 'List new Space', new_space_path, class: "btn btn-success" %>
     </div>
+    <div class="nav_item">
+      <%= form_tag search_spaces_path, class: "form-horizontal search_form", method: :get do %>
+        <%= text_field_tag :search_term, params[:search_term], placeholder: "Search spaces here" %>
+        <%= submit_tag "Search", class: "btn" %>
+      <% end %>
+    </div>
     <div class="btn-group nav_item pull_right">
     <%= link_to "#", class: "btn dropdown-toggle", "data-toggle" => "dropdown" do %>
     <%= current_user.username.capitalize %> <span class="caret"></span>

@@ -23,13 +23,18 @@ class Space < ActiveRecord::Base
 
   #self.per_page = 10
 
-  #def category_name #virtual attribute to catch creating categories on the fly. Getter method
+  #def category_name #virtual attribute to catch creating categories on the fly. Getter method. Refer to Ryan Bates's railscast on this
     #categories.name if categories
   #end
 
   #def category_name=(name) #Setter method
     #self.categories = Category.find__or_create_by_name(name) unless name.blank?
   #end
+
+  def self.search_by_name(search_term)
+    return "Your search term was empty." if search_term.blank?
+    where("name LIKE ?", "%#{search_term}%").order("created_at DESC")
+  end
 
   def list_region
     if self.categories.any?

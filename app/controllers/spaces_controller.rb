@@ -72,6 +72,10 @@ class SpacesController < ApplicationController
     end
   end
 
+  def search
+    @results = Space.search_by_name(params[:search_term])
+  end
+
 
   private
 
