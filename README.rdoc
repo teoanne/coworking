@@ -1,4 +1,4 @@
 == README
 
-This app was built as a size project mainly during the summer months of June and July 2014. This app (tentatively naming it Cowork), allows users to register, search for, add, upload photos and leave reviews for all the coworking spaces around the world. Users can also upvote or downvote a coworking space.
+This app was built as a side project mainly during the summer months of June and July 2014. This app (tentatively naming it Coworkr), allows users to register, search for, add, upload photos and leave reviews for all the coworking spaces around the world. Users can also upvote or downvote a coworking space. In future, I will work on features to allow users to book the coworking space directly through the site.
 
