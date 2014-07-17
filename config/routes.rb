@@ -1,5 +1,9 @@
 Coworking::Application.routes.draw do
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   root to: 'pages#front' 
 
   get "/login", to: "sessions#new"
@@ -8,6 +12,8 @@ Coworking::Application.routes.draw do
   get "/register", to: "users#new"
   get "/home", to: 'spaces#index'
   get "/deactivate", to: 'users#deactivate'
+  get "/forgot_password", to: "forgot_passwords#new"
+  get "/reset_password", to: "forgot_passwords#reset"
 
   resources :spaces, except: [:destroy] do
     # to cater for posts/2/vote 
@@ -26,6 +32,7 @@ Coworking::Application.routes.draw do
 
   resources :users, except: [:destroy]
   resources :categories, only: [:show]
+  resources :forgot_passwords, only: [:create]
 
   namespace :admin do
     resources :categories, only: [:new, :create]

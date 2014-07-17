@@ -1,0 +1,16 @@
+<div class="register">
+  <div class="container">
+    <%= render 'shared/title', title: "Reset Password" %>
+    <p class="quiet">Enter your email address below and we will send a link to email for you to reset your password.</p>
+    <div class="well">  
+      <%= form_tag forgot_passwords_path do %>
+      <div class="form-group">
+        <%= label_tag :email %>
+        <%= text_field_tag :email, params[:email] || "" %>
+      </div>
+      <%= submit_tag "Reset Password", class: "btn btn-info" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
