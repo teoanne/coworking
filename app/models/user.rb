@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :votes
 
   before_save :generate_slug
+  before_create :generate_token #generates random user token before user is saved
 
   def deactivate!
     update_column(:active, false)
@@ -28,6 +29,10 @@ class User < ActiveRecord::Base
 
   def generate_slug
     self.slug = self.username.downcase
+  end
+
+  def generate_token
+    self.token = SecureRandom.urlsafe_base64
   end
   
 end

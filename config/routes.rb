@@ -14,6 +14,7 @@ Coworking::Application.routes.draw do
   get "/deactivate", to: 'users#deactivate'
   get "/forgot_password", to: "forgot_passwords#new"
   get "/reset_password", to: "forgot_passwords#reset"
+  get "/reset_forgot_password", to: "forgot_passwords#reset_password"
 
   resources :spaces, except: [:destroy] do
     # to cater for posts/2/vote 

@@ -17,7 +17,10 @@ class ForgotPasswordsController < ApplicationController
   end
 
   def reset
-    
   end
+
+  def reset_password
+  end
+
 
 end
