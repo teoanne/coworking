@@ -1,0 +1,13 @@
+<div class="register">
+  <div class="container">
+    <%= render 'shared/title', title: "Enter New Password" %>
+    <div class="well">  
+      <%= form_tag reset_passwords_path, class: "form-horizontal" do %>
+      <%= label_tag :password, "New Password" %>
+      <%= password_field_tag %>
+      <%= hidden_field_tag :token, @token %>
+      <%= submit_tag "Submit", class: "btn btn-default" %>
+      <% end %>
+    </div>
+  </div>
+</div>

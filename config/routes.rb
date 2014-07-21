@@ -12,9 +12,12 @@ Coworking::Application.routes.draw do
   get "/register", to: "users#new"
   get "/home", to: 'spaces#index'
   get "/deactivate", to: 'users#deactivate'
+
   get "/forgot_password", to: "forgot_passwords#new"
-  get "/reset_password", to: "forgot_passwords#reset"
-  get "/reset_forgot_password", to: "forgot_passwords#reset_password"
+  get "/reset_confirmation", to: "forgot_passwords#reset"
+  
+  #get "/reset_forgot_password", to: "forgot_passwords#reset_password"
+  get "/invalid_token", to: "reset_passwords#invalid_token"
 
   resources :spaces, except: [:destroy] do
     # to cater for posts/2/vote 
@@ -34,6 +37,7 @@ Coworking::Application.routes.draw do
   resources :users, except: [:destroy]
   resources :categories, only: [:show]
   resources :forgot_passwords, only: [:create]
+  resources :reset_passwords, only: [:show, :create]
 
   namespace :admin do
     resources :categories, only: [:new, :create]

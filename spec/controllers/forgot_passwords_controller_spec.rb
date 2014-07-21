@@ -22,11 +22,11 @@ describe ForgotPasswordsController do
 
     context "valid user email" do
       before do
-        Fabricate(:user, email: "joe@example.com")
+         Fabricate(:user, email: "joe@example.com") 
       end
       it "redirects to the reset password confirmation page" do
         post :create, email: "joe@example.com"
-        expect(response).to redirect_to reset_password_path
+        expect(response).to redirect_to reset_confirmation_path
       end
 
       it "sends out an email to the email address" do
@@ -50,3 +50,20 @@ describe ForgotPasswordsController do
     end
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
