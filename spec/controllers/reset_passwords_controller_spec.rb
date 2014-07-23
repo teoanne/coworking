@@ -31,10 +31,10 @@ describe ResetPasswordsController do
     context "valid token" do
 
       it "changes the user's password" do
-        foo = Fabricate(:user, password: 'abcdefgh')
-        foo.update_column(:token, "12345")
-        post :create, token: "12345", password: 'password'
-        expect(foo.reload.password).to eq("password")
+        foo = Fabricate(:user)
+        foo.update_column(:token, '12345')
+        post :create, token: '12345', password: 'password'
+        expect(foo.reload.authenticate('new_password')).to be_true
       end
 
       it "redirects to the user sign in page" do
@@ -50,6 +50,7 @@ describe ResetPasswordsController do
         post :create, token: "12345", password: "new_password"
         expect(flash[:success]).to be_present
       end
+
       it "regenerates the user token" do # as a security measure, so that other ppl cannot reuse token
         foo = Fabricate(:user, password: "abcdefgh")
         foo.update_column(:token, "12345")
