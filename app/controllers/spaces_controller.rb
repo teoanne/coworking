@@ -7,7 +7,6 @@ class SpacesController < ApplicationController
     #@spaces = Space.all.paginate(:page => params[:page], :per_page => 5) #
     @spaces = Space.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
     #all.sort_by{|x| x.total_votes}.reverse
-    
   end
 
   def show
@@ -24,11 +23,12 @@ class SpacesController < ApplicationController
   end
 
   def create
-    @space = Space.new(space_params.merge!(user_id: current_user.id))
+    @space = Space.new(space_params.merge!(user_id: current_user.id)) # can also query this together if merged
     #category = Category.create(params[:category_name]) 
     #@space.user = current_user
 
-    if @space.save(space_params)
+    if !@space.name
+      @space.save(space_params)
       flash[:notice] = "You have successfully added a coworking space!"
       redirect_to home_path
     else
